@@ -1,3 +1,3 @@
-const circular {
+const circular ={
     circular: true
 }
