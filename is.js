@@ -1,6 +1,3 @@
-&& !is.fun(n) && !is.arr(n) && n !== null
-
-
 is.num = (n) => typeof n === 'number'
 is.nan = (n) => Number.isNaN(n)
 is.str = (n) => typeof n === 'string'
