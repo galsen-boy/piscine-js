@@ -1,4 +1,5 @@
-const concatStr = (a, b) => {
-    return `${a} ${b}`
+const concatStr = (n1, n2) => {
+    return n1.concat(n2)
 }
-console.log(concatStr('daibou', 'ba'))
+console.log(concatStr([1,2,3], [4,5,6]))
+console.log(concatStr('daibbou', 'ba'))
