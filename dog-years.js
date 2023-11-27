@@ -1,4 +1,3 @@
-
 const planets = {
     earth: 1,
     mercury: 0.2408467,
@@ -10,9 +9,10 @@ const planets = {
     neptune: 164.79132,
 }
 
+
 const dogYears = (name, years) => {
-    let oneDogYearOnEarth = 7/31557600
-    let DogYearOnEarth =oneDogYearOnEarth*years
-    let result = Math.round(DogYearOnEarth*planets[name]*100)/100
+    const time = 7/31557600
+    let inter = time*years
+    let result = Math.round(inter*planets[name]*100)/100
     return result
-}
+}   
