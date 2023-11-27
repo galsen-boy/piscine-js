@@ -13,6 +13,6 @@ const planets = {
 const dogYears = (name, years) => {
     const time = 7/31557600
     let inter = time*years
-    let result = Math.round(inter*planets[name]*100)/100
+    let result = Number(inter*planets[name]).toFixed(2)
     return result
-}   
+} 
