@@ -1,8 +1,8 @@
 const more = (n) => {
-    return n++
+    return n + 1
 }
 const less = (n) => {
-    return n--
+    return n - 1
 }
 const add = (a, b) => {
     return a + b
@@ -10,3 +10,4 @@ const add = (a, b) => {
 const sub = (a, b) => {
     return a - b
 }
+ 
