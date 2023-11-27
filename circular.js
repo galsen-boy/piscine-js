@@ -1,3 +1,3 @@
-const circular ={
-    circular: 123
-}
+const circular = {}
+circular.circular = circular
+console.log(circular.circular)
