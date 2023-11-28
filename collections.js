@@ -8,7 +8,7 @@ const setToArr = (set) => {
     return Array.from(set)
 }
 const setToStr = (set) => {
-    return setToArray(set).join('')
+    return setToArr(set).join('')
 }
 const strToArr = (str) => {
     return str.split('')
@@ -23,7 +23,7 @@ const objToArr = (obj) => {
     return Object.values(obj)
 }
 const objToMap = (obj) => {
-    return new Map(objToArray(obj))
+    return new Map(objToArr(obj))
 }
 const arrToObj = (arr) => {
     return Object.fromEntries(arr)
