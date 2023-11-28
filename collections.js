@@ -4,7 +4,7 @@ const arrToSet = (arr) => {
 const arrToStr = (arr) => {
     return arr.join('')
 }
-const setToArray = (set) => {
+const setToArr = (set) => {
     return Array.from(set)
 }
 const setToStr = (set) => {
@@ -16,18 +16,18 @@ const strToArr = (str) => {
 const strToSet = (str) => {
     return new Set(strToArr(str))
 }
-const mapToObject = (map) => {
+const mapToObj = (map) => {
     return Object.fromEntries(map)
 }
-const objToArray = (obj) => {
+const objToArr = (obj) => {
     return Object.values(obj)
 }
 const objToMap = (obj) => {
     return new Map(objToArray(obj))
 }
-const arrToObject = (arr) => {
+const arrToObj = (arr) => {
     return Object.fromEntries(arr)
 }
-const strToObject = (str) => {
+const strToObj = (str) => {
     return Object.fromEntries(strToArr(str))
 }
