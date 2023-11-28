@@ -26,8 +26,13 @@ const objToMap = (obj) => {
     return  new Map(Object.entries(obj))
 }
 const arrToObj = (arr) => {
-    return Object.fromEntries(arr)
+    const obj = {}
+    for (let i = 0; i < arr.length; i++) {
+        obj[i] = arr[i]
+    }
+    return obj
 }
+console.log(arrToObj([1, 2, 1, 3]));
 const strToObj = (str) => {
     return Object.fromEntries(strToArr(str))
 }
