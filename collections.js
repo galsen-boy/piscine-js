@@ -32,7 +32,10 @@ const arrToObj = (arr) => {
     }
     return obj
 }
-console.log(arrToObj([1, 2, 1, 3]));
 const strToObj = (str) => {
-    return Object.fromEntries(strToArr(str))
+    const obj = {}
+    for (let i = 0; i < str.length; i++) {
+        obj[i] = str[i]
+    }
+    return obj
 }
