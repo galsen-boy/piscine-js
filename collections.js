@@ -60,7 +60,7 @@ function superTypeOf(value) {
     } else if (typeof value === 'boolean') {
         return 'Boolean';
     } else if (typeof value === 'undefined') {
-        return 'Undefined';
+        return 'undefined';
     } else {
         return 'Unknown';
     }
