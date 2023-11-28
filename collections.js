@@ -51,8 +51,16 @@ function superTypeOf(value) {
       return 'Set';
     } else if (value instanceof Object) {
       return typeof 'Object';
-    } else {
-      return typeof value;
-    }
+    } else if (typeof value === 'string') {
+        return 'String';
+    } else if (typeof value === 'number') {
+    return 'Number';
+    } else if (typeof value === 'boolean') {
+     return 'Boolean';
+     } else if (typeof value === 'function') {
+        return 'Function';
+    } else if (typeof value === 'undefined') {
+     return 'Undefined';
+    } 
   }
   
