@@ -44,11 +44,11 @@ function superTypeOf(value) {
     if (value === null) {
       return 'null';
     } else if (Array.isArray(value)) {
-      return 'array';
+      return 'Array';
     } else if (value instanceof Map) {
-      return 'map';
+      return 'Map';
     } else if (value instanceof Set) {
-      return 'set';
+      return 'Set';
     } else {
       return typeof value;
     }
