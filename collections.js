@@ -49,7 +49,7 @@ function superTypeOf(value) {
       return 'Map';
     } else if (value instanceof Set) {
       return 'Set';
-    } else if (typeof value === 'object'){
+    } else if (value instanceof Object) {
       return typeof 'Object';
     } else {
       return typeof value;
