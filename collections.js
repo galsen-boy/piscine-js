@@ -23,7 +23,7 @@ const objToArr = (obj) => {
     return Object.values(obj)
 }
 const objToMap = (obj) => {
-    return new Map(objToArr(obj))
+    return Object.entries(obj)
 }
 const arrToObj = (arr) => {
     return Object.fromEntries(arr)
