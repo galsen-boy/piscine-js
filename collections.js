@@ -64,5 +64,6 @@ function superTypeOf(value) {
     } else {
         return 'Unknown';
     }
+}
    
   
