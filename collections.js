@@ -39,3 +39,18 @@ const strToObj = (str) => {
     }
     return obj
 }
+
+function superTypeOf(value) {
+    if (value === null) {
+      return 'null';
+    } else if (Array.isArray(value)) {
+      return 'array';
+    } else if (value instanceof Map) {
+      return 'map';
+    } else if (value instanceof Set) {
+      return 'set';
+    } else {
+      return typeof value;
+    }
+  }
+  
