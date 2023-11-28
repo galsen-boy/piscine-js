@@ -4,7 +4,7 @@
     } else if (obj.hasOwnProperty('Δv') && obj.hasOwnProperty('Δt')) {
         return obj.Δv / obj.Δt
     } else if (obj.hasOwnProperty('t') && obj.hasOwnProperty('d')) {
-        return 2*obj.t /(obj.d/10)**2
+        return 2*obj.t /(obj.d)**2
 
     } else {
         return "impossible"
