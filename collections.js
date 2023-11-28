@@ -49,18 +49,20 @@ function superTypeOf(value) {
       return 'Map';
     } else if (value instanceof Set) {
       return 'Set';
-    } else if (value instanceof Object) {
-      return typeof 'Object';
-    } else if (typeof value === 'string') {
-        return 'String';
-    } else if (typeof value === 'number') {
-    return 'Number';
-    } else if (typeof value === 'boolean') {
-     return 'Boolean';
-     } else if (typeof value === 'function') {
+    } else if (typeof value === 'object' ) {
+        return 'Object';
+    } else if (typeof value === 'function') {
         return 'Function';
+    } else if (typeof value === 'number') {
+        return 'Number';
+    } else if (typeof value ==='string') {
+        return 'String';
+    } else if (typeof value === 'boolean') {
+        return 'Boolean';
     } else if (typeof value === 'undefined') {
-     return 'Undefined';
-    } 
-  }
+        return 'Undefined';
+    } else {
+        return 'Unknown';
+    }
+   
   
