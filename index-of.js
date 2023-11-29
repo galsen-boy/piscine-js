@@ -1,3 +1,9 @@
-const indexof = (index) => {
+const indexÀf = (index) => {
+    
+}
+const lastIndexOf = () => {
+
+}
+const includes = () => {
     
 }
