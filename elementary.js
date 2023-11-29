@@ -42,7 +42,7 @@ const divide = (a, b) => {
 }
 const modulo = (a, b) => {
     const quotient = divide(a, b);
-    const remainder = a - (quotient * b);
+    const remainder = a - multiply(b, quotient)
     return remainder;
 }
 
