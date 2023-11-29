@@ -6,4 +6,4 @@ const repeat = (str, num) => {
     }
     return result
 }
- console.log(repeat('Hello', 8))
+//  console.log(repeat('Hello', 8))
