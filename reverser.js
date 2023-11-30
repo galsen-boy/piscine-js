@@ -1,12 +1,20 @@
 const reverse = (arr) => {
-    let arrf = ''
+    let arrs = ''
+    let arrf = []
     for (let i = arr.length-1 ; i>= 0; i--) {
-        arrf += arr[i]
+        if (typeof arr === 'string') {
+            arrs += arr[i]
+        }
+        if (Array.isArray(arr)) {
+            arrf.push(arr[i])
+        }
     }
-    if (typeof arrf === 'string') {
-        return arrf
+    if (typeof arr === 'string') {
+        return arrs
     }
-    if (Array.isArray(arrf)) {
-        return arrf.split()
+    if (Array.isArray(arr)) {
+    return arrf
     }
+    
 }
+ console.log(reverse('123'));
