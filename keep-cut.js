@@ -14,6 +14,10 @@ const keepLast = (str) => {
     return str.slice(-2)
 }
 const keepFirstLast = (str) => {
+    if (str.length>=4){
     return str.slice(0, 2) + str.slice(-2)
+    }else {
+        return str
+    }
 }
-console.log(keepFirstLast('daibou'));
+console.log(keepFirstLast('af'));
