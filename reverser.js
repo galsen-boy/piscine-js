@@ -17,4 +17,4 @@ const reverse = (arr) => {
     }
     
 }
- console.log(reverse('123'));
+ console.log(reverse('je'));
