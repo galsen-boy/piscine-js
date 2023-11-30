@@ -7,13 +7,13 @@ const RNA = (adnstr) => {
             res += 'G'
         }else if(adnstr[i] === 'G'){
             res += 'C'
-        }else if(adnstr[i] === 'U'){
+        }else if(adnstr[i] === 'T'){
             res += 'A'
         }
     }
     return res
 }
-const DNA = (adnstr) => {
+const DNA = (arnstr) => {
     let res = ''
     for(let i = 0;i<adnstr.length;i++){
         if(adnstr[i] === 'A'){
@@ -22,7 +22,7 @@ const DNA = (adnstr) => {
             res += 'G'
         }else if(adnstr[i] === 'G'){
             res += 'C'
-        }else if(adnstr[i] === 'T'){
+        }else if(adnstr[i] === 'U'){
             res += 'A'
         }
     }
