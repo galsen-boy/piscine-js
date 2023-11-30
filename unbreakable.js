@@ -1,34 +1,34 @@
-function split(str, obj) {
-    let arr = []
-    if ((str == 'rrrr') || (str == 'rrirr')) {
-        switch (str) {
-            case 'rrrr':
-                return ['', '', ''];
-            case 'rrirr':
-                return ['', 'i', '']
-        }
+const join = (arr, sep) => {
+    if (sep === null) {
+        sep = ",";
     }
-    for (let i = 0; i < str.length - obj.length + 1; i++) {
-        if (str.slice(i, i + obj.length) == obj) {
-            arr.push(str.slice(0, i))
-            str = str.slice(i + obj.length)
-            i = 0
-        }
+    var result = arr[0].toString();
+    for (var i = 1; i < arr.length; i++) {
+        result += sep + arr[i];
     }
-    arr.push(str)
-    return arr
+    return result;
 }
 
-function join(str, obj) {
-    let res = ''
-    for (let i = 0; i < str.length; i++) {
-        if (obj.length == 0) {
-            res += str[i]
-        } else {
-            res += str[i] + obj
-        }
+const split = (str, sep) => {
+    if (sep === null) {
+        sep = ",";
     }
-
-    res = res.slice(0, res.length - obj.length)
-    return res
+    var result = [];
+    if (sep === "") {
+        for (var i = 0; i < str.length; i++) {
+            result.push(str[i]);
+        }
+        return result;
+    }
+    var end = str.indexOf(sep);
+    while (end > -1) {
+        end = str.indexOf(sep);
+        if (end === -1) {
+            break;
+        }
+        result.push(str.slice(0, end));
+        str = str.slice(end + sep.length);
+    }
+    result.push(str);
+    return result;
 }
