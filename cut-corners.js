@@ -1,108 +1,101 @@
 const round = (n) => {
-    let ost
-    let res
-    let flag = false
-    if (n < 0) {
-        n = -n
-        flag = true
+    switch (n) {
+        case Number.NaN:
+            return 0;
+        case n <= Number.MIN_VALUE:
+            return Number.MIN_VALUE;
+        case n >= Number.MAX_VALUE:
+            return Number.MAX_VALUE;
+        default:
+            let r = modulo(n, 1);
+            if (r == 0) {
+                return n;
+            } else {
+                if (n > 0) {
+                    if (r < 0.5) {
+                        return n - r;
+                    } else {
+                        return n + (1 - r);
+                    }
+                } else {
+                    if (r > -0.5) {
+                        return n - r;
+                    } else {
+                        return n - (1 + r);
+                    }
+                }
+            }
     }
-    ost = modulo(n, 1)
-    if (ost > 0.5) {
-        res = n + 1 - ost
-    } else {
-        res = n - ost
-    }
-    if (flag) {
-        res = -res
-    }
-    return res
-}
+};
+
 const ceil = (n) => {
-    let ost
-    let res
-    ost = modulo(n, 1)
-    if (n > 0 && ost != 0) {
-        return res = n + 1 - ost
-    } else {
-        return res = n - ost
+    if (Number.NaN) {
+        return 0;
     }
-    return n
-}
+    let r = modulo(n, 1);
+    if (r == 0) {
+        return n;
+    } else {
+        if (n < 0) {
+            return n + Math.abs(r);
+        } else {
+            return n + (1 - r);
+        }
+    }
+};
+
 const floor = (n) => {
-    let ost
-    let res
-    ost = modulo(n, 1)
-    if (n > 0 && ost != 0) {
-        return res = n - ost
-    } else if (ost === 0) {
-        // console.log(n)
-        return n
-    } else {
-        let x
-        x = 1 + ost
-        return res = n - x
+    if (Number.NaN) {
+        return 0;
     }
-    return n
-}
+    let r = modulo(n, 1);
+    if (r == 0) {
+        return n;
+    } else {
+        if (r < 0) {
+            return n - (1 + r)
+        } else {
+            return n - r;
+        }
+
+    }
+};
+
 const trunc = (n) => {
-    let ost
-    let res
-    ost = modulo(n, 1)
-    if (n > 0 && ost != 0) {
-        return res = n - ost
+    if (n >= 0xfffffffff) {
+        let res = n - 0xfffffffff
+        return trunc(res) + 0xfffffffff
+    }
+
+    if (n >= 0) {
+        return floor(n);
     } else {
-        let x
-        x = 1 + ost
-        return res = n - ost
+        return ceil(n);
     }
-    return n
-}
+};
 
-const multiply = (a, b) => {
-    let result = 0;
-    let flag = false
-    if (b < 0) {
-        b = -b
-        flag = true
-    }
-    while (b > 0) {
-        result += a
-        b--
-    }
-    if (flag) {
-        result = -result
-    }
-    return result
-}
-
-const divide = (a, b) => {
-    let count = 0
-    let flag = false
-    if (a < 0 && b < 0) {
-        a = -a
-        b = -b
-    }
-
-    if (a < 0) {
-        a = -a
-        flag = true
-    }
-    if (b < 0) {
-        b = -b
-        flag = true
-    }
-    let result = a
-    while (result >= b) {
-        result -= b
-        count++
-    }
-    if (flag) {
-        count = -count
-    }
-    return count
-}
 const modulo = (a, b) => {
-    const quotient = divide(a, b);
-    const remainder = a - multiply(b, quotient)
-    return remainder;
-}
+    // check if a and b are negative
+    const aSign = Math.sign(a);
+
+    //make a and b absolute values
+    a = Math.abs(a);
+    b = Math.abs(b);
+    var res = 0;
+
+    let i = 0;
+    while (i <= a) {
+        i += b;
+    }
+
+    //minus the last b to find the last multiple of b below a
+    i -= b;
+
+    // the modulo is the difference between a and i
+    res = a - i;
+    if (aSign < 0) {
+        res = -res;
+    }
+
+    return parseFloat(res);
+};
