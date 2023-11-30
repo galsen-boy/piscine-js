@@ -1,20 +1,26 @@
-const slice = (str, strart, end) => {
-    let strf = ''
-    if (!end){
-        end = str.length -1
+const slice = (str, start = 0, end = str.length) => {
+    if (start < 0) {
+        start = -start
+        start = str.length - start
     }
-    for (let i = strart; i <= end; i++) {
-        strf += str[i]
+    if (end < 0) {
+        end = -end
+        end = str.length - end
     }
-    if (typeof str === 'string') {
-        return strf
-    }else if (Array.isArray(str)) {
-        return strf.split('')
+    let res = ''
+    let arr = []
+    for (let i = 0; i <= str.length - 1; i++) {
+        if (i >= start && i < end) {
+            if (typeof str == 'string') {
+                res += str[i]
+            } else if (Array.isArray(str)) {
+                arr.push(str[i])
+            }
+            console.log(str[i])
+        }
     }
+    if (typeof str == 'string') {
+        return res
+    }
+    return arr
 }
-
-// Array.prototype.slice = undefined
-// String.prototype.slice = undefined
-
-
-// console.log(slice(['d', 'a', 'i', 'b', 'o', 'u'], 2, 4))
