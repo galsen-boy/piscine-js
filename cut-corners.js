@@ -106,5 +106,3 @@ const modulo = (a, b) => {
     const remainder = a - multiply(b, quotient)
     return remainder;
 }
-
-// console.log(round(9.5));
