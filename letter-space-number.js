@@ -1,1 +1,7 @@
-const letterSpaceNumber = (str) =>  str.match('/\w\s\d(?!\d)/g')
+const letterSpaceNumber = (str) => {
+    let res = str.match(/. \d((?=\W)|$)/g);
+    if (res) {
+        return res
+    }
+    return []
+}
