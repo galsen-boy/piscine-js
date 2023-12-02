@@ -71,5 +71,7 @@ const sums = (num) => {
                 [4, 6],
                 [5, 5],
               ]
+            } else {
+                return [[1, 1]]
             }
     }
