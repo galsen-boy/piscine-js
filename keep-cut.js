@@ -20,4 +20,4 @@ const keepFirstLast = (str) => {
         return str
     }
 }
-console.log(keepFirstLast('af'));
+console.log(keepFirstLast('af')) 
