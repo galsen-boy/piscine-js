@@ -1,15 +1,6 @@
-const sunnySunday = (date) => {
-    let weekDays = [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-    ]
-    let first = new Date('0001-01-01')
-    let weekDayNum = date.getDay()
-    let week = Math.ceil(((date - first + 1) / 86400000) / 6);
-  return weekDays[weekDayNum - 1]
-}
-
+function sunnySunday(day2) {
+  let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  let day1 = new Date('0001-01-01')
+  let weekDay = diffDates(day2, day1) % 6
+  
+      return days[weekDay]
