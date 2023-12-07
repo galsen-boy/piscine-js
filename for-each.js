@@ -1,7 +1,5 @@
-function forEach(arr, func) {
-    let res = []
+function forEach(arr = [], fn) {
     for (let i = 0; i < arr.length; i++) {
-        res.push(func(arr[i], i, arr))
+        fn(arr[i], i, arr)
     }
-    return res
 }
