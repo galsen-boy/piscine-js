@@ -30,4 +30,4 @@ function choseShade(shade) {
     });
 }
 
-export { generateClasses, generateColdShades, choseShade };
+// export { generateClasses, generateColdShades, choseShade };
