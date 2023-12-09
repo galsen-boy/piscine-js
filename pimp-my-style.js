@@ -16,6 +16,6 @@ function pimp() {
     if (counter === styles.length) {
         button.classList.toggle("unpimp");
     }
-}
+// }
 
 export { pimp };
