@@ -1,81 +1,106 @@
-document.addEventListener("mousemove", (e) => {
-    pick(e);
-});
+export function pick() {
 
-document.addEventListener("click", (e) => {
-    pick(e);
-    copyHSL();
-});
+    //create the div containing the hsl value
+    const hslDiv = document.createElement('div')
 
-const hslDiv = document.createElement("div");
-hslDiv.classList.add("hsl");
-document.body.appendChild(hslDiv);
+    hslDiv.setAttribute('class', 'text hsl')
 
-const hueDiv = document.createElement("div");
-hueDiv.classList.add("hue", "text");
-document.body.appendChild(hueDiv);
+    const hslValue = document.createTextNode('hsl(0, 50%, 0%)')
+    hslDiv.appendChild(hslValue)
+    const currentDiv = document.getElementById("div1");
+    document.body.insertBefore(hslDiv, currentDiv);
 
-const luminosityDiv = document.createElement("div");
-luminosityDiv.classList.add("luminosity", "text");
-document.body.appendChild(luminosityDiv);
+    //Create the hue div
+    const hueDiv = document.createElement('div')
+    hueDiv.setAttribute('class', 'text hue')
+    hueDiv.setAttribute('style', 'position: absolute;')
+    let hueValue = document.createTextNode(`hue 0`);
+    hueDiv.appendChild(hueValue)
+    const prevDiv = document.getElementById("div1");
+    document.body.insertBefore(hueDiv, prevDiv);
 
-const svgns = "http://www.w3.org/2000/svg";
-const svg = document.createElement("svg");
-svg.id = "svg";
-svg.setAttribute("width", "100%");
-svg.setAttribute("height", "100%");
-svg.setAttribute("viewBox", "0 0 100% 100%");
-svg.setAttribute("preserveAspectRatio", "none");
+    //Create the luminosity div
+    const lumDiv = document.createElement('div')
 
-const axisX = document.createElementNS(svgns, "line");
-axisX.id = "axisX";
-axisX.setAttribute("x1", "0");
-axisX.setAttribute("y1", "0");
-axisX.setAttribute("x2", "0");
-axisX.setAttribute("y2", "100%");
-axisX.setAttribute("stroke", "red");
-axisX.setAttribute("stroke-width", "3");
-svg.appendChild(axisX);
+    lumDiv.setAttribute('class', 'text luminosity')
+    lumDiv.setAttribute('style', 'position: absolute;')
+    const lumValue = document.createTextNode('luminosity  0')
+    lumDiv.appendChild(lumValue)
+    const prev1Div = document.getElementById("div1");
+    document.body.insertBefore(lumDiv, prev1Div);
 
-const axisY = document.createElementNS(svgns, "line");
-axisY.id = "axisY";
-axisY.setAttribute("x1", "0");
-axisY.setAttribute("y1", "0");
-axisY.setAttribute("x2", "100%");
-axisY.setAttribute("y2", "0");
-axisY.setAttribute("stroke", "red");
-axisY.setAttribute("stroke-width", "3");
-svg.appendChild(axisY);
 
-document.body.appendChild(svg);
+    let svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+    svg.setAttributeNS(null, 'height', window.innerHeight)
+    svg.setAttributeNS(null, 'width', window.innerWidth)
+    
 
-function pick(e) {
-    if (e === undefined) return;
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-    const hue = Math.round((mouseX / window.innerWidth) * 360);
-    const luminosity = Math.round((mouseY / window.innerHeight) * 100);
-    const hsl = `hsl(${hue}, 100%, ${luminosity}%)`;
-    document.body.style.background = hsl;
-    hslDiv.innerHTML = hsl;
-    hueDiv.innerHTML = `${hue}`;
-    luminosityDiv.innerHTML = `${luminosity}`;
-    drawLines(mouseX, mouseY);
+    var axisX = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    axisX.setAttributeNS(null, 'id', 'axisY')
+    axisX.setAttributeNS(null, 'x1', 0)
+    axisX.setAttributeNS(null, 'x2', 0)
+    axisX.setAttributeNS(null, 'y1', 0)
+    axisX.setAttributeNS(null, 'y2', 0)
+    var axisY = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    axisY.setAttributeNS(null, 'id', 'axisX')
+    axisY.setAttributeNS(null, 'y1', 0)
+    axisY.setAttributeNS(null, 'y2', 0)
+    axisY.setAttributeNS(null, 'x1',0)
+    axisY.setAttributeNS(null, 'x2', 0)
+    axisX.style.stroke = 'white'
+    axisX.style.strokeWidth = '1'
+    axisY.style.stroke = 'white'
+    axisY.style.strokeWidth = '1'
+    svg.append(axisX, axisY)
+
+    document.body.append(svg)
+
+
+
+    document.addEventListener('mousemove', event => {
+
+        let windowWidth = document.documentElement.clientWidth;
+        let x = event.clientX;
+        let windowHeight = document.documentElement.clientHeight;
+        let y = event.clientY;
+
+        let hueVal = (x / windowWidth) * 360
+        let lumVal = (y / windowHeight) * 100
+        // hueValue = document.createTextNode(`hue ${hueVal}`)
+        hueDiv.textContent = `hue \n ${Math.round(hueVal)}`
+        lumDiv.textContent = `luminosity \n ${Math.round(lumVal)}`
+        hslDiv.textContent = `hsl(${Math.round(hueVal)}, 50%, ${Math.round(lumVal)}%)`
+        document.body.style.background = `hsl(${Math.round(hueVal)}, 50%, ${Math.round(lumVal)}%)`
+       
+        let lineX = document.getElementById('axisY')
+        lineX.setAttributeNS(null, 'x1', 0)
+        lineX.setAttributeNS(null, 'x2', window.innerWidth)
+        lineX.setAttributeNS(null, 'y1', event.clientY)
+        lineX.setAttributeNS(null, 'y2', event.clientY)
+        
+        let lineY = document.getElementById('axisX')
+        lineY.setAttributeNS(null, 'y1', 0)
+        lineY.setAttributeNS(null, 'y2', window.innerHeight)
+        lineY.setAttributeNS(null, 'x1', event.clientX)
+        lineY.setAttributeNS(null, 'x2', event.clientX)
+       
+        lineX.style.stroke = 'white'
+        lineX.style.strokeWidth = '1'
+        lineY.style.stroke = 'white'
+        lineY.style.strokeWidth = '1'
+
+        // svg.append(lineY)
+        // svg.append(lineX)
+        
+    })
+
+    document.addEventListener('click', event => {
+        let copyValue = document.querySelector('.hsl').innerHTML
+        navigator.clipboard.writeText(copyValue)
+    
+    })
+
+
+
+
 }
-
-function drawLines(x, y) {
-    axisX.setAttribute("x1", x);
-    axisX.setAttribute("x2", x);
-    axisY.setAttribute("y1", y);
-    axisY.setAttribute("y2", y);
-}
-
-async function copyHSL() {
-    try {
-        await navigator.clipboard.writeText(hslDiv.innerHTML);
-    } catch (err) {
-        console.error("Failed to copy: ", err);
-    }
-}
-
-export { pick };
