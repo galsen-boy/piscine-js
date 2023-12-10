@@ -29,4 +29,4 @@ function compose(e) {
     }
 }
 
-// export { compose }
+export { compose }
