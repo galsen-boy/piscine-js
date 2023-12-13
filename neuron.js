@@ -9,7 +9,7 @@ function neuron(arr) {
                 .replaceAll(' ', '_')
                 .replace('?', '')
                 .toLowerCase();
-            res['questions'][questionKey] ||= {};
+            res['questions'][questionKey] ||= {}
             res['questions'][questionKey]['question'] = question
             res['questions'][questionKey]['responses'] ||= []
             res['questions'][questionKey]['responses'].push(response)
