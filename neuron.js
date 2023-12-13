@@ -29,7 +29,7 @@ function neuron(arr) {
             res['affirmations'] ||= {};
             let affirmationKey = affirmation.replaceAll(' ', '_').toLowerCase();
             res['affirmations'][affirmationKey] ||= {};
-            res['affirmations'][affirmationKey]['affirmation'] = affirmation;
+            res['affirmations'][affirmationKey]['affirmation'] = affirmation
             res['affirmations'][affirmationKey]['responses'] ||= []
             res['affirmations'][affirmationKey]['responses'].push(response)
         }
