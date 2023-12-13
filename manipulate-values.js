@@ -23,5 +23,5 @@ function reduceValues(obj, callback, acc) {
     for (let key in obj) {
         acc = callback(acc, obj[key]);
     }
-    return acc;
+    return acc
 }
