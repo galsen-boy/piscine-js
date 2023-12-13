@@ -48,7 +48,7 @@ function parseQuestionOrder(arr) {
         .split(' ')
         .slice(1)
         .join(' ');
-    return [statement, response];
+    return [statement, response]
 }
 
 function parseAffirmations(arr) {
