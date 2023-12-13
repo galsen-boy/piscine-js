@@ -8,7 +8,7 @@ function neuron(arr) {
             let questionKey = question
                 .replaceAll(' ', '_')
                 .replace('?', '')
-                .toLowerCase();
+                .toLowerCase()
             res['questions'][questionKey] ||= {}
             res['questions'][questionKey]['question'] = question
             res['questions'][questionKey]['responses'] ||= []
