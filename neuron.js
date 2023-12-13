@@ -31,7 +31,7 @@ function neuron(arr) {
             res['affirmations'][affirmationKey] ||= {};
             res['affirmations'][affirmationKey]['affirmation'] = affirmation;
             res['affirmations'][affirmationKey]['responses'] ||= [];
-            res['affirmations'][affirmationKey]['responses'].push(response);
+            res['affirmations'][affirmationKey]['responses'].push(response)
         }
     }
     return res
