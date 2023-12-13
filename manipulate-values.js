@@ -13,7 +13,7 @@ function mapValues(obj, callback) {
     for (let key in obj) {
         res[key] = callback(obj[key]);
     }
-    return res;
+    return res
 }
 
 function reduceValues(obj, callback, acc) {
