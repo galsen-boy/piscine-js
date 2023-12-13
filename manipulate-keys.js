@@ -30,5 +30,5 @@ function reduceKeys(obj, callback, initialValue) {
         if (res.slice(0, 2) === ", ") res = res.slice(2);
         if (undef && res[0] === ":") res = res.slice(1);
     }
-    return res
+    return res;
 }
