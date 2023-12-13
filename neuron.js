@@ -60,5 +60,5 @@ function parseAffirmations(arr) {
         .split(' ')
         .slice(1)
         .join(' ');
-    return [statement, response];
+    return [statement, response]
 }
