@@ -3,7 +3,7 @@ function neuron(arr) {
     for (let i = 0; i < arr.length; i++) {
         let str = arr[i].split(' ');
         if (/questions:/i.test(str[0])) {
-            res['questions'] ||= {};
+            res['questions'] ||= {}
             let [question, response] = parseQuestionOrder(str)
             let questionKey = question
                 .replaceAll(' ', '_')
