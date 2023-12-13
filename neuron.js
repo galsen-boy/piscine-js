@@ -4,7 +4,7 @@ function neuron(arr) {
         let str = arr[i].split(' ');
         if (/questions:/i.test(str[0])) {
             res['questions'] ||= {};
-            let [question, response] = parseQuestionOrder(str);
+            let [question, response] = parseQuestionOrder(str)
             let questionKey = question
                 .replaceAll(' ', '_')
                 .replace('?', '')
