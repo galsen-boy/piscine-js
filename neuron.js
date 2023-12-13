@@ -14,7 +14,7 @@ function neuron(arr) {
             res['questions'][questionKey]['responses'] ||= [];
             res['questions'][questionKey]['responses'].push(response);
         } else if (/orders:/i.test(str[0])) {
-            let [order, response] = parseQuestionOrder(str);
+            let [order, response] = parseQuestionOrder(str)
             res['orders'] ||= {}
             let orderKey = order
                 .replaceAll(' ', '_')
