@@ -38,7 +38,7 @@ function neuron(arr) {
 }
 
 function parseQuestionOrder(arr) {
-    let statement = arr.slice(1).join(' ').split('-')[0].slice(0, -1);
+    let statement = arr.slice(1).join(' ').split('-')[0].slice(0, -1)
     let response = arr
         .join(' ')
         .split('-')
