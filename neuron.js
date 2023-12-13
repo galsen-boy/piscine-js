@@ -27,7 +27,7 @@ function neuron(arr) {
         } else if (/affirmations:/i.test(str[0])) {
             let [affirmation, response] = parseAffirmations(str);
             res['affirmations'] ||= {};
-            let affirmationKey = affirmation.replaceAll(' ', '_').toLowerCase();
+            let affirmationKey = affirmation.replaceAll(' ', '_').toLowerCase()
             res['affirmations'][affirmationKey] ||= {}
             res['affirmations'][affirmationKey]['affirmation'] = affirmation
             res['affirmations'][affirmationKey]['responses'] ||= []
