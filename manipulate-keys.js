@@ -27,8 +27,8 @@ function reduceKeys(obj, callback, initialValue) {
     }, initialValue);
     // Stupid test cases make me do stupid hardcode :P
     if (typeof res !== "number") {
-        if (res.slice(0, 2) === ", ") res = res.slice(2);
-        if (undef && res[0] === ":") res = res.slice(1);
+        if (res.slice(0, 2) === ", ") res = res.slice(2)
+        if (undef && res[0] === ":") res = res.slice(1)
     }
-    return res;
+    return res
 }
