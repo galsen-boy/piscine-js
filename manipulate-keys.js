@@ -13,7 +13,7 @@ function mapKeys(obj, callback) {
         .reduce((res, key, i) => {
             res[key] = obj[Object.keys(obj)[i]];
             return res;
-        }, {});
+        }, {})
 }
 
 function reduceKeys(obj, callback, initialValue) {
