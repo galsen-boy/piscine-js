@@ -19,7 +19,7 @@ function neuron(arr) {
             let orderKey = order
                 .replaceAll(' ', '_')
                 .replace('!', '')
-                .toLowerCase();
+                .toLowerCase()
             res['orders'][orderKey] ||= {}
             res['orders'][orderKey]['order'] = order
             res['orders'][orderKey]['responses'] ||= []
