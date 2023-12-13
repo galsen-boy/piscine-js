@@ -19,7 +19,7 @@ function mapKeys(obj, callback) {
 function reduceKeys(obj, callback, initialValue) {
     let undef = false;
     if (initialValue === undefined) {
-        initialValue = "";
+        initialValue = ""
         undef = true
     }
     let res = Object.keys(obj).reduce((acc, curr) => {
