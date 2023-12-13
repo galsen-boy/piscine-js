@@ -20,7 +20,7 @@ function reduceKeys(obj, callback, initialValue) {
     let undef = false;
     if (initialValue === undefined) {
         initialValue = "";
-        undef = true;
+        undef = true
     }
     let res = Object.keys(obj).reduce((acc, curr) => {
         return callback(acc, curr, initialValue)
