@@ -2,7 +2,7 @@ function filterValues(obj, callback) {
     let res = {};
     for (let key in obj) {
         if (callback(obj[key])) {
-            res[key] = obj[key];
+            res[key] = obj[key]
         }
     }
     return res
