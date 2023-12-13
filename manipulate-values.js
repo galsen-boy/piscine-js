@@ -11,7 +11,7 @@ function filterValues(obj, callback) {
 function mapValues(obj, callback) {
     let res = {};
     for (let key in obj) {
-        res[key] = callback(obj[key]);
+        res[key] = callback(obj[key])
     }
     return res
 }
