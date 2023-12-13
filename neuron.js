@@ -1,7 +1,7 @@
 function neuron(arr) {
     var res = {};
     for (let i = 0; i < arr.length; i++) {
-        let str = arr[i].split(' ');
+        let str = arr[i].split(' ')
         if (/questions:/i.test(str[0])) {
             res['questions'] ||= {}
             let [question, response] = parseQuestionOrder(str)
