@@ -5,7 +5,7 @@ function filterValues(obj, callback) {
             res[key] = obj[key];
         }
     }
-    return res;
+    return res
 }
 
 function mapValues(obj, callback) {
