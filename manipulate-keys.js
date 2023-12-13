@@ -4,7 +4,7 @@ function filterKeys(obj, predicate) {
         .reduce((res, key) => {
             res[key] = obj[key];
             return res;
-        }, {});
+        }, {})
 }
 
 function mapKeys(obj, callback) {
