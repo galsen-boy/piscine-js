@@ -10,7 +10,7 @@ function neuron(arr) {
                 .replace('?', '')
                 .toLowerCase();
             res['questions'][questionKey] ||= {};
-            res['questions'][questionKey]['question'] = question;
+            res['questions'][questionKey]['question'] = question
             res['questions'][questionKey]['responses'] ||= []
             res['questions'][questionKey]['responses'].push(response)
         } else if (/orders:/i.test(str[0])) {
