@@ -17,7 +17,7 @@ function mapKeys(obj, callback) {
 }
 
 function reduceKeys(obj, callback, initialValue) {
-    let undef = false;
+    let undef = false
     if (initialValue === undefined) {
         initialValue = ""
         undef = true
