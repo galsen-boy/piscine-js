@@ -1,5 +1,5 @@
 function filterValues(obj, callback) {
-    let res = {};
+    let res = {}
     for (let key in obj) {
         if (callback(obj[key])) {
             res[key] = obj[key]
