@@ -47,7 +47,7 @@ function parseQuestionOrder(arr) {
         .slice(1)
         .split(' ')
         .slice(1)
-        .join(' ');
+        .join(' ')
     return [statement, response]
 }
 
