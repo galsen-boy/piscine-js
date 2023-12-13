@@ -7,5 +7,5 @@ function map(arr, func) {
 }
 
 function flatMap(arr, func) {
-    return arr.reduce((acc, x, ind) => acc.concat(func(x, ind, arr)), []);
+    return arr.reduce((acc, x, ind) => acc.concat(func(x, ind, arr)), [])
 }
