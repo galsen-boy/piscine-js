@@ -3,7 +3,7 @@ function filterKeys(obj, predicate) {
         .filter(predicate)
         .reduce((res, key) => {
             res[key] = obj[key];
-            return res;
+            return res
         }, {})
 }
 
