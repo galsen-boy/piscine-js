@@ -34,7 +34,7 @@ function neuron(arr) {
             res['affirmations'][affirmationKey]['responses'].push(response);
         }
     }
-    return res;
+    return res
 }
 
 function parseQuestionOrder(arr) {
