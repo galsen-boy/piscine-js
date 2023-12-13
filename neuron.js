@@ -21,7 +21,7 @@ function neuron(arr) {
                 .replace('!', '')
                 .toLowerCase();
             res['orders'][orderKey] ||= {};
-            res['orders'][orderKey]['order'] = order;
+            res['orders'][orderKey]['order'] = order
             res['orders'][orderKey]['responses'] ||= []
             res['orders'][orderKey]['responses'].push(response)
         } else if (/affirmations:/i.test(str[0])) {
