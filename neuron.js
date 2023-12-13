@@ -1,5 +1,5 @@
 function neuron(arr) {
-    var res = {};
+    var res = {}
     for (let i = 0; i < arr.length; i++) {
         let str = arr[i].split(' ')
         if (/questions:/i.test(str[0])) {
