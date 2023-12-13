@@ -12,7 +12,7 @@ function mapKeys(obj, callback) {
         .map(callback)
         .reduce((res, key, i) => {
             res[key] = obj[Object.keys(obj)[i]];
-            return res;
+            return res
         }, {})
 }
 
