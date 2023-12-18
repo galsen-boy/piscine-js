@@ -14,4 +14,4 @@ const changed = words.map(word => {
 });
 
 const result = changed.join(' ');
-fs.writeFile('verydisc
+fs.writeFile('verydisco
