@@ -13,5 +13,5 @@ const changed = words.map(word => {
   return sec + fir;
 });
 
-const result = changed.j
+const result = changed.jo
 fs.writeFile('verydisco-forever.txt', result)
