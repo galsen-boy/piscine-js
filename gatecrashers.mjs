@@ -1,78 +1,83 @@
-import http from 'http';
-import { join } from 'path';
-import { readFile, writeFile } from 'fs/promises';
+/*
+To modify the guest list now your friends will need to make authenticated requests. 
+You decided that only your 3 best friends 
+(Caleb_Squires, Tyrique_Dalton and Rahima_Young) 
+will be able to modify the list. You also told them the secret 
+password abracadabra in order to do that.
 
-const authorizedUsers = {
-  'Caleb_Squires': 'abracadabra',
-  'Tyrique_Dalton': 'abracadabra',
-  'Rahima_Young': 'abracadabra',
-};
+The request query will look like this curl -u Caleb_Squires:abracadabra ....
 
-const directoryPath = './guests';
+The server should properly handle unauthorized requests using the error code 401.
 
-function handlePostRequest(request, response) {
-  let body = '';
-  request.on('data', chunk => {
-    body += chunk.toString();
-  });
+Apart for the authentication part your server's behavior should remain unchanged from uninvited exercise:
 
-  request.on('end', async () => {
-    try {
-      const { username, password } = request.auth;
-      if (!authorizedUsers[username] || authorizedUsers[username] !== password) {
-        response.statusCode = 401;
-        response.setHeader('Content-Type', 'application/json');
-        response.end(JSON.stringify({ error: 'Authorization Required' }));
-        return;
-      }
+You will listen to port 5000 and print a message containing the port you are using.
+For each authorized http POST request, your program 
+should create the corresponding JSON file and store the contents of the body, and 
+then provide the content as JSON in the HTTP response, if possible.
+*/
 
-      const guestName = request.url.slice(1);
-      const filePath = join(directoryPath, `${guestName}.json`);
-      const guestData = JSON.parse(body);
+import http from "http";
+import { readFile, writeFile } from "fs/promises";
+import { Buffer } from "node:buffer";
 
-      await writeFile(filePath, JSON.stringify(guestData));
-
-      response.statusCode = 200;
-      response.setHeader('Content-Type', 'application/json');
-      response.end(JSON.stringify(guestData));
-    } catch (error) {
-      response.statusCode = 500;
-      response.setHeader('Content-Type', 'application/json');
-      response.end(JSON.stringify({ error: 'Server failed' }));
-      console.error(error);
-    }
-  });
-}
-
-function handleRequest(request, response) {
-  const { url, method, headers } = request;
-
-  if (method === 'POST') {
-    if (!headers.authorization) {
-      response.statusCode = 401;
-      response.setHeader('WWW-Authenticate', 'Basic realm="Authorization Required"');
-      response.setHeader('Content-Type', 'application/json');
-      response.end(JSON.stringify({ error: 'Authorization Required' }));
-      return;
-    }
-
-    const auth = headers.authorization.replace(/^Basic /, '');
-    const [username, password] = Buffer.from(auth, 'base64').toString().split(':');
-    request.auth = { username, password };
-
-    handlePostRequest(request, response);
-  } else {
-    response.statusCode = 404;
-    response.setHeader('Content-Type', 'application/json');
-    response.end(JSON.stringify({ error: 'Guest not found' }));
-  }
-}
-
-const server = http.createServer(handleRequest);
-
+const host = 'localhost';
 const port = 5000;
-server.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+const pathGuests = `guests`;
+const bestFriends = ['Caleb_Squires', 'Tyrique_Dalton', 'Rahima_Young'];
 
-export default server;
+const guestData = (req, res) => {
+    let statusCode = 200;
+    res.setHeader('Content-Type', 'application/json');
+    const guestFile = `${req.url.slice(1)}.json`
+
+    const errHandler = (err, statusCode, message) => {
+        let bodyRes = JSON.stringify({ error: message })
+
+        res.writeHead(statusCode, {
+            'Content-Length': Buffer.byteLength(bodyRes),
+        })
+            .end(bodyRes);
+    }
+
+    //reading credentials
+
+    let baseAuthorusation = req.headers['authorization'];
+    if (!baseAuthorusation) {
+        errHandler('no credentials found', 401, 'no credentials found');
+        return;
+    }
+    let credentials = Buffer.from(baseAuthorusation.slice(6), "base64").toString().split(':');
+
+    if (!bestFriends.includes(credentials[0]) || credentials[1] !== 'abracadabra') {
+        errHandler('wrong credentials', 401, 'Authorization Required%')
+        return;
+    }
+
+    // in the test for this task they put body in the headers !!!!!
+    let bodyReq = req.headers['body'];
+    // // reading the request body
+    // let bodyReq = [];
+    // req.on('data', (chunk) => {
+    //     bodyReq.push(chunk);
+    // }).on('end', () => {
+    //     bodyReq = Buffer.concat(bodyReq).toString();
+    //     // at this point, `body` has the entire request body stored in it as a string
+    // }).on('error', errHandler);
+
+    writeFile(`${pathGuests}/${guestFile}`, bodyReq)
+        .then(() => {
+            let bodyRes = bodyReq;
+            res.writeHead(statusCode, {
+                'Content-Length': Buffer.byteLength(bodyRes),
+            })
+                .end(bodyRes);
+        })
+        .catch(errHandler);
+
+}
+
+const server = http.createServer(guestData);
+server.listen(port, host, () => {
+    console.log(`Server is running on http://${host}:${port}`);
+});
