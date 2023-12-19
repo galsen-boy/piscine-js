@@ -14,7 +14,7 @@ async function loadShoppingList(fileName) {
     }
     console.error(`Une erreur s'est produite lors du chargement de la liste : ${error.message}`);
     process.exit(1);
-    // En cas d'erreur, affiche un message d'erreur et quitte le processus avec le code d'erreur 1.
+
   }
 }
 
