@@ -8,7 +8,7 @@ const authorizedUsers = {
   'Rahima_Young': 'abracadabra',
 };
 
-const directoryPath = 'guests';
+const directoryPath = './guests';
 
 function handlePostRequest(request, response) {
   let body = '';
