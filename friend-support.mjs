@@ -3,7 +3,7 @@ import fs from 'fs/promises';
 import path from 'path';
 
 const port = 5000;
-const directoryPath = './guests';
+const directoryPath = 'guests';
 
 const server = http.createServer(async (req, res) => {
   try {
@@ -25,6 +25,6 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+  console.log(`Server is listening on port ${port}`)
 });
 
